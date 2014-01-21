@@ -1,0 +1,34 @@
+/*
+  Theme Name: Startme
+  Theme URI:
+  Author: Startme
+  Description: Based on Flato theme by ThemeMeme
+  Version: 1.0
+  Template: flato
+
+  License: GNU General Public License
+
+  Tags: white, blue, two-columns, responsive-layout, sticky-post, theme-options, threaded-comments, full-width-template, light, right-sidebar
+*/
+
+@import url("../flato/style.css");
+
+.site-title a {
+    color: #ccc;
+}
+
+header.site-header {
+    background-color: #f1f1f1;
+}
+
+.site-top {
+    background-color: #4792cc;
+}
+
+footer.site-footer {
+    background-color: #333;
+}
+
+a {
+    color: #0088cc;
+}
