@@ -25,6 +25,10 @@ header.site-header {
     background-color: #4792cc;
 }
 
+.site-title {
+    text-transform: none;
+}
+
 footer.site-footer {
     background-color: #333;
 }
