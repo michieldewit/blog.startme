@@ -82,6 +82,8 @@ A few Wordpress environment variables can be controlled via Heroku using `heroku
 * `FORCE_SSL_ADMIN`
 * `WP_CACHE`
 * `DISABLE_WP_CRON`
+* `WORDPRESS_DIR`, see [Specifying WordPress installation directory](#specifying-wordpress-installation-directory)
+* `WORDPRESS_VERSION`, see [VERSIONS](VERSIONS.md)
 
 > To add a Heroku environment variable: `heroku config:set GOOG_UA_ID=UA=1234777-9`
 
@@ -175,6 +177,17 @@ Delete the directive from `nginx.conf.erb`.
 ### Add a `favicon.ico` drop one into `public`
 See [#22](https://github.com/mchung/heroku-buildpack-wordpress/issues/22) for details.
 
+### Specifying WordPress installation directory
+Specifying a WordPress installation directory may help local development as you can just unzip wordpress into a subdirectory and .gitignore that folder.
+```bash
+$ heroku config:set WORDPRESS_DIR=mywordpress
+```
+wp-config.php:
+```php
+define( 'WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'].'/wp-content' );
+define( 'WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] .'/wp-content' );
+define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/mywordpress');
+```
 
 ### Choosing specific versions of vendored packages
 
@@ -280,6 +293,8 @@ Not comfortable downloading and running a copy of someone else's PHP or Nginx ex
 ## Authors and Contributors
 
 * Marc Chung - Follow [@mchung](https://github.com/mchung) on GitHub and also [@heisenthought](https://twitter.com/heisenthought) on Twitter
+* Oskari Okko Ojala - [@okko](https://github.com/okko) on GitHub, [@okko](https://twitter.com/okko) on Twitter
+* Luis Herranz - [@LuisHerranz](https://github.com/LuisHerranz) on Github, [@luisherranz](https://twitter.com/luisherranz) on Twitter
 
 ## Thanks
 
