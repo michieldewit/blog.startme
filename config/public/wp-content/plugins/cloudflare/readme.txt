@@ -1,9 +1,9 @@
 === CloudFlare ===
-Contributors: i3149, jchen329, jamescf
+Contributors: i3149, jchen329, jamescf, simon-says
 Tags: cloudflare, comments, spam, cdn, free, website, performance, speed
 Requires at least: 2.8
-Tested up to: 3.5
-Stable tag: 1.3.9
+Tested up to: 3.9.1
+Stable tag: 1.3.14
 License: GPLv2
 
 The CloudFlare WordPress Plugin ensures your WordPress blog is running optimally on the CloudFlare platform.
@@ -22,7 +22,7 @@ THINGS YOU NEED TO KNOW:
 
 * Every time you click the 'spam' button on your blog, this threat information is sent to CloudFlare to ensure you are constantly getting the best site protection.
 
-* We recommend that any user on WordPress and CloudFlare should use this plugin. 
+* We recommend any WordPress and CloudFlare user use this plugin. For more best practices around using WordPress and CloudFlare, see: https://support.cloudflare.com/hc/en-us/articles/201717894-Using-CloudFlare-and-WordPress-Five-Easy-First-Steps
 
 MORE INFORMATION ON CLOUDFLARE:
 
@@ -37,6 +37,32 @@ You will also want to sign up your blog with CloudFlare.com
 [Read more](http://blog.cloudflare.com/introducing-the-cloudflare-wordpress-plugin) on why we created this plugin.
 
 == Changelog ==
+
+= 1.3.14 =
+
+* Improved logic to detect the customer domain, with added option for a manual override
+* Standardised error display
+* Updated CloudFlare IP Ranges
+
+= 1.3.13 =
+
+* Clarified error messaging in the plugin further
+* Added cURL error detection to explain issues with server installed cert bundles
+
+= 1.3.12 =
+
+* Removed use of php short-code in a couple of places
+* Added some cURL / json_decode error handling to output to the screen any failures
+* Reformatted error / notice display slightly
+
+= 1.3.11 =
+
+* Adjusted a line syntax to account for differing PHP configurations.
+
+= 1.3.10 = 
+
+* Added IP ranges.
+
 = 1.3.9 =
 * Made adjustment to syntax surrounding cURL detection for PHP installations that do not have short_open_tag enabled.
 
