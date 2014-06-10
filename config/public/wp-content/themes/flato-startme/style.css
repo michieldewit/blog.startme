@@ -13,6 +13,14 @@
 
 @import url("../flato/style.css");
 
+h1, h2, h3, h4, h5, h6, .site-title {
+    font-family: Gudea, "Helvetica Neue", HelveticaNeue, TeXGyreHeros, "Nimbus Sans L", "Liberation Sans", Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+}
+
 .site-title a {
     color: #ccc;
 }
