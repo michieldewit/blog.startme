@@ -23,7 +23,7 @@
 					<!-- .site-info --></div>
 
 					<div class="col-sm-6 site-credit">
-						<a href="http://www.themememe.com/flato">Flato</a> by Theme Author
+						<a href="http://www.themememe.com/flato">Flato</a> by ThemeMeme
 					<!-- .site-credit --></div>
 				</div>
 		</div>
