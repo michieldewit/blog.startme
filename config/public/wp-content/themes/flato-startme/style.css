@@ -19,28 +19,90 @@ h1, h2, h3, h4, h5, h6, .site-title {
 
 body {
     font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    background-color: #fdfdfd;
 }
 
 .site-title a {
-    color: #ccc;
+    color: #8b9aaa;
 }
 
 header.site-header {
-    background-color: #f1f1f1;
+    background-color: #fdfdfd;
 }
 
 .site-top {
-    background-color: #4792cc;
+    background: #fdfdfd url(http://assets.start.me/assets/logo.png) no-repeat 14px center;
+    border-bottom: 1px solid #e0e4e8;
+}
+
+@media (max-width: 1180px) {
+    .site-top {
+        background-image: none;
+    }
 }
 
 .site-title {
     text-transform: none;
 }
 
+.menu-bar > ul > li > a {
+    font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: none;
+}
+
+.site-search {
+    display: none;
+}
+
+.menu-toggle,
+.menu-bar ul li a,
+.menu-bar ul li > a:hover,
+.menu-bar ul li:hover > a,
+.menu-bar ul li.current_page_item > a,
+.menu-bar ul li.current-menu-item > a,
+.menu-bar ul li.current-menu-ancestor > a,
+.menu-bar ul li.current_page_ancestor > a,
+.menu-bar ul li.current-post-parent > a {
+    color: #667484;
+    line-height: 52px;
+}
+
+.menu-toggle.active,
+.menu-toggle:hover,
+.menu-bar ul > li > a:hover,
+.menu-bar ul > li:hover > a {
+    color: #fdfdfd;
+    background-color: #3e5f84
+}
+
+.site-main [class*="navigation"] a:hover, .site-main [class*="navigation"] a:focus,
+.btn, button, input[type="button"], input[type="reset"], input[type="submit"] {
+    background: #3e5f84;
+}
+
+.current_page_item {
+    background-color: #c5d2e2;
+}
+
+.entry-title a:hover, .entry-title a:focus {
+    color: #0088cc;
+}
+
 footer.site-footer {
-    background-color: #333;
+    background-color: #eee;
+    color: #263a51;
+}
+
+.site-footer a, .site-footer a:hover, .site-footer a:focus {
+    color: #0088cc;
 }
 
 a {
+    color: #0088cc;
+}
+
+a:hover, a:focus {
     color: #0088cc;
 }
