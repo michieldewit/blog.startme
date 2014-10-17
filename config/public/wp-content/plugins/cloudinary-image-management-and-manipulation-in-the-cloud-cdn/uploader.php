@@ -169,7 +169,7 @@
             } elseif ($headers == array_values($headers)) {
                 return implode("\n", $headers);
             } else {
-                $join_pair_colon = "CloudinaryUploader::join_pair_colon";
+                $join_pair_colon = array("CloudinaryUploader", "join_pair_colon");
                 return implode("\n", array_map($join_pair_colon, array_keys($headers), array_values($headers)));
             }
         }

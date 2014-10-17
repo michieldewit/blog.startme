@@ -2,7 +2,7 @@
 Contributors: cloudinary
 Tags: image, images, media, gallery, photo, photos, picture, pictures, thumbnail, upload, admin, administration, api, cms, dashboard, editor, flickr, integration, manage, mobile, page, pages, post, social-media
 Requires at least: 3.0
-Tested up to: 3.8
+Tested up to: 4.0
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,10 @@ Check out our dynamic [knowledge base](http://support.cloudinary.com/forums/2185
 N/A
 
 == Changelog ==
+
+= 1.1.3 (18 Sep 2014) =
+* Fix display compatibility issue with WordPress 4.0.
+* Support earlier versions of PHP 5.2.
 
 = 1.1.2 (24 Dec 2013) =
 * Fix display compatibility issue with WordPress 3.8.

@@ -4,11 +4,11 @@ Plugin Name: Cloudinary
 Plugin URI: http://cloudinary.com/
 Description: Cloudinary allows you to upload your images to the cloud. They'll be available to your visitors through a fast content delivery network, improving your website's loading speed and overall user experience. With Cloudinary, you can transform uploaded images without leaving Wordpress - apply effects (sharpen, gray scale, sepia, and more), smart cropping and re-sizing (including face detection based cropping), and much more.
 
-Version:  1.1.2
+Version:  1.1.3
 Author: Cloudinary Ltd.
 Author URI: http://cloudinary.com/
 */
-define('cloudinary_VERSION', '1.1.2');
+define('cloudinary_VERSION', '1.1.3');
 define('cloudinary_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 require "cloudinary_api.php" ;
 require "api.php" ;
@@ -354,17 +354,20 @@ class CloudinaryPlugin
     if($cloudinary_url){
       Cloudinary::config_from_url($cloudinary_url);
     }    
+  }
+  
+  function configured() {
+    return Cloudinary::config_get("api_secret") && Cloudinary::config_get("cloud_name") && Cloudinary::config_get("api_key");    
   }    
   
   /* Configure menus */
   function cloudinary_options_page() {
     $this->config(); # This is called before admin_init
-    $configured = Cloudinary::config_get("api_secret") && Cloudinary::config_get("cloud_name") && Cloudinary::config_get("api_key");
     $settings_item = CLOUDINARY_UNIQUE_ID . "/options.php";
     $library_item = CLOUDINARY_UNIQUE_ID . "/library.php";
-    $main_action = $configured ? $library_item : $settings_item;
+    $main_action = $this->configured() ? $library_item : $settings_item;
     add_menu_page('Cloudinary Menu', 'Cloudinary', 'manage_options', $main_action, NULL, plugins_url(CLOUDINARY_UNIQUE_ID . '/images/favicon.png'));
-    if ($configured){
+    if ($this->configured()){
       add_submenu_page($main_action, "Cloudinary Media Library", "Media library", 'publish_pages', $main_action);
       add_submenu_page($main_action, "Cloudinary Settings", "Settings", 'manage_options', $settings_item);
     } else {
@@ -379,8 +382,7 @@ class CloudinaryPlugin
     } else {    
       $cloudinary_url = str_replace("CLOUDINARY_URL=", "", trim($_POST['cloudinary_url']));
       Cloudinary::config_from_url($cloudinary_url);
-      $configured = Cloudinary::config_get("api_secret") && Cloudinary::config_get("cloud_name") && Cloudinary::config_get("api_key");
-      if ($configured) {
+      if ($this->configured()){
         update_option('cloudinary_url', $cloudinary_url);
         $url = $this->prepare_cloudinary_media_lib_url("check");
         $args = array("method"=>"GET", "timeout"=>5, "redirection"=>5, "httpversion"=>"1.0", "blocking"=>TRUE, "headers"=>array(), 
@@ -492,6 +494,7 @@ class CloudinaryPlugin
   function media_cloudinary($editor_id = 'content') {
     $context = apply_filters('media_buttons_context', __('Cloudinary Upload/Insert'));
     $xdmremote = $this->prepare_cloudinary_media_lib_url("wp_post");
+    if (!$xdmremote) return ""; 
 
     echo $this->init_media_lib_integration($xdmremote, false) .
          '<a href="#" class="cloudinary_add_media" id="' . esc_attr( $editor_id ) . '-add_media" ' .
@@ -517,7 +520,7 @@ class CloudinaryPlugin
   }
     
   function media_lib_upload_admin_footer() {
-    if (!Cloudinary::config_get("api_secret")) {
+    if (!$this->configured()) {
       return;
     }
     $img_l = get_bloginfo('url') . "/wp-content/plugins/" . CLOUDINARY_UNIQUE_ID . "/images/ajax-loader.gif";
@@ -586,7 +589,7 @@ class CloudinaryPlugin
     $sendback = wp_get_referer();
 
     if($pagenow == 'upload.php' && isset($_REQUEST['cloud_upload']) && (int) $_REQUEST['cloud_upload']) {
-      if (!Cloudinary::config_get("api_secret")) {
+      if (!$this->configured()) {
          echo "Please setup environment to upload images to cloudinary";
          exit();
       }
@@ -606,7 +609,7 @@ class CloudinaryPlugin
       $this->return_to_media_lib($errors, $successes, "upload_cloudinary", $sendback);
     }
     if($action === 'upload_cloudinary' || $action === 'migrate_away_cloudinary') {
-      if (!Cloudinary::config_get("api_secret")) {
+      if (!$this->configured()) {
          echo "Please setup environment to upload images to cloudinary";
          exit();
       }
@@ -671,6 +674,7 @@ class CloudinaryPlugin
   }
  
   function prepare_cloudinary_media_lib_url($mode) {
+    if (!$this->configured()) return NULL;
     $params = array("timestamp" => time(), "mode"=>$mode, "plugin_version"=>cloudinary_VERSION);
     $params["signature"] = Cloudinary::api_sign_request($params, Cloudinary::config_get("api_secret"));
     $params["api_key"] = Cloudinary::config_get("api_key");

@@ -8,7 +8,7 @@ jQuery(function() {
     jQuery('#wpbody').css('height', 'auto').css('overflow', 'visible');
   }        
     
-  function add_to_gallary(json) {
+  function add_to_gallery(json) {
     var ajaxurl = xdmConfig.data("ajaxurl");
     var data = {
       action: 'cloudinary_register_image',
@@ -22,7 +22,7 @@ jQuery(function() {
       if (json.error) {
         alert(json.message);
       } else {
-        jQuery('.cloudinary_message').html('Image successfully added to gallary');
+        jQuery('.cloudinary_message').html('Image successfully added to gallery');
       }
     });    
   }
@@ -97,13 +97,14 @@ jQuery(function() {
       onMessage: function(message, origin){
         var json = JSON.parse(message);
         switch (json.message) {
-	      case "insert_into_post":
+        case "insert_into_post":
           close_media_library();
 	  	    insert_into_post(json);
 	  	    break;
         case "add_to_gallary":
+        case "add_to_gallery":
           close_media_library();
-          add_to_gallary(json);
+          add_to_gallery(json);
           break;        	
         case "done": 
           close_media_library();
