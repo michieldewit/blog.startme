@@ -113,4 +113,6 @@ server {
     fastcgi_pass    unix:/tmp/php-fpm.socket;
     fastcgi_param   SCRIPT_FILENAME $document_root$fastcgi_script_name;
   }
+
+  include cors.conf;
 }
