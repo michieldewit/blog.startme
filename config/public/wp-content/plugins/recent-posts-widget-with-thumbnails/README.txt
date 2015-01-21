@@ -1,0 +1,154 @@
+=== Recent Posts Widget With Thumbnails ===
+Contributors: Hinjiriyo
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBF76TCGTRNX2
+Tags: thumbnails, thumb, thumbs, thumbnail, featured images, featured, image, images, recent posts, widgets, widget
+Requires at least: 2.9
+Tested up to: 4.1
+Stable tag: 2.2.2
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+Small and fast plugin to display in the sidebar a list of linked titles and thumbnails of the most recent postings
+
+== Description ==
+
+No huge widget with hundreds of options. This plugin is based on the well-known WordPress default widget 'Recent Posts' and enhanced to display thumbnails of the posts.
+
+The thumbnails will be built from the featured image of a post or of the first image in the post content. If there is neither a featured image nor a content image then you can define a default thumbnail.
+
+The thumbnails appears left-aligned to the post titles. You can set the width and heigth of the thumbnails in the list.
+
+The widget is available in english and german.
+
+== Installation ==
+
+= Using The WordPress Dashboard =
+
+1. Navigate to the 'Add New' in the plugins dashboard
+2. Search for 'Recent Posts Widget With Thumbnails'
+3. Click 'Install Now'
+4. Activate the plugin on the Plugin dashboard
+5. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
+
+= Uploading in WordPress Dashboard =
+
+1. Navigate to the 'Add New' in the plugins dashboard
+2. Navigate to the 'Upload' area
+3. Select `recent-posts-widget-with-thumbnails.zip` from your computer
+4. Click 'Install Now'
+5. Activate the plugin in the Plugin dashboard
+6. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
+
+= Using FTP =
+
+1. Download `recent-posts-widget-with-thumbnails.zip`
+2. Extract the `recent-posts-widget-with-thumbnails` directory to your computer
+3. Upload the `recent-posts-widget-with-thumbnails` directory to the `/wp-content/plugins/` directory
+4. Activate the plugin in the Plugin dashboard
+5. Go to 'Appereance' => 'Widgets' and select 'Recent Posts Widget With Thumbnails'
+
+
+== Frequently Asked Questions ==
+
+= What are the requirements for this plugin? =
+
+The WordPress version should be at least 2.9 to use featured images.
+
+The theme should support `wp_head()` in the HTML header section to print the CSS code for a beautiful alignment of the thumbnails.
+
+= Can I set a default thumbnail? =
+
+Yes.
+
+= Can I set the width and height of the thumbnail? =
+
+Yes.
+
+= Can I change the alignment of the thumbnails in the list? =
+
+This feature will come in a future version of the plugin. Set the alignment in the CSS of your theme instead.
+
+= Where can I set the CSS of the list? =
+
+This feature will come in a future version of the plugin. Set the CSS in the style.css of your theme instead.
+
+= I want to style the list with my own CSS. What is the CSS selector of the list? =
+
+The list is set in a container with the class attribut with the value 'recent-posts-widget-with-thumbnails'. So your CSS code can catch the list using `.recent-posts-widget-with-thumbnails ul`.
+
+= Can the plugin take the first image of a post as thumbnail image? =
+
+Yes. And you can select to prefer the first image to the featured image or to use the first image only.
+
+= Which languages does the plugin support? =
+
+Actually these languages are supported:
+
+* English
+* German
+
+Further translations are welcome. If you want to give in your translation please leave a notice in the [plugin's support forum](http://wordpress.org/support/plugin/recent-posts-widget-with-thumbnails).
+
+= Where is the *.pot file for translating the plugin in any language? =
+
+If you want to contribute a translation of the plugin in your language it would be great! You would find the *.pot file in the 'languages' directory of this plugin. If you would send the *.po file to me I would include it in the next release of the plugin.
+
+== Screenshots ==
+
+1. The first screenshot shows the widget in the sidebar with a title, clickable images and links, in german.
+2. The second screenshot shows the german translated widget on the Widget Management Page in the backend. It looks like the WordPress default widget 'Recent Posts' with additional options for the thumbnails.
+
+== Changelog ==
+
+= 2.2.2 =
+* Successfully tested with WordPress 4.1
+* Fixed bug which threw a warning in debug mode when accessing options
+
+= 2.2.1 =
+* Fixed bug which prevented to find the first content image
+* Slightly revised algorithm for detecting the first image in post content
+
+= 2.2 =
+Revised algorithm to detect the first image in post content.
+
+= 2.1.1 =
+Successfully tested with WordPress 4.0
+
+= 2.1 =
+* Improve uninstall routine
+* Tested successfully with WordPress 3.9.2
+
+= 2.0 =
+* Added option to set width and height of the thumbnails
+* Added option to prefer first content image to featured image
+* Added option to use only first content image as thumbnail
+* Added option to set a default thumbnail
+* Added function to delete plugin's settings in the database if the plugin is deleted
+* Improved code for more robustness
+* Revised *.pot file and german translation
+
+= 1.0 =
+* The plugin was released.
+
+== Upgrade Notice ==
+
+= 2.2.2 =
+Successfully tested with WordPress 4.1, fixed a minor bug
+
+= 2.2.1 =
+Bugfixed and improved algorithm for detecting the first image in post contents
+
+= 2.2 =
+Revised algorithm for detecting the first image in post content
+
+= 2.1.1 =
+Successfully tested with WordPress 4.0
+
+= 2.1 =
+Improved uninstall routine, tested with WordPress 3.9.2
+
+= 2.0 =
+More options and improved code
+
+= 1.0 =
+First release.
