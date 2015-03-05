@@ -105,21 +105,30 @@
             $params = array_filter($params);
 
             $api_url = Cloudinary::cloudinary_api_url($action, $options);
+            $api_url .= "?" . preg_replace("/%5B\d+%5D/", "%5B%5D", http_build_query($params)); 
             $ch = curl_init($api_url);
 
+            $post_params = array();
             if ($file) {
-                if (!preg_match('/^https?:/', $file) && $file[0] != "@") {
-                    $params["file"] = "@" . $file;
+                if (!preg_match('/^@|^https?:|^s3:|^data:[^;]*;base64,([a-zA-Z0-9\/+\n=]+)$/', $file)) {
+                    if (function_exists("curl_file_create")) {
+                        $post_params['file'] = curl_file_create($file);
+                        $post_params['file']->setPostFilename($file);
+                    } else {
+                        $post_params["file"] = "@" . $file;
+                    }
                 } else {
-                    $params["file"] = $file;
+                    $post_params["file"] = $file;
                 }
             }
 
             curl_setopt($ch, CURLOPT_POST, true);
             curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_params);
             curl_setopt($ch, CURLOPT_CAINFO,realpath(dirname(__FILE__))."/cacert.pem");
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_USERAGENT, Cloudinary::USER_AGENT);
+
             $response = curl_exec($ch);
             $curl_error = NULL;
             if(curl_errno($ch))

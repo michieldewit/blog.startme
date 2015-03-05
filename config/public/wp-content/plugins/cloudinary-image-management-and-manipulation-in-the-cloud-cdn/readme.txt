@@ -161,6 +161,10 @@ N/A
 
 == Changelog ==
 
+= 1.1.4 (4 Nov 2014) =
+* Support newer versions of PHP in file upload. Report user agent to Cloudinary.
+* Correctly locate path to ajax-loader.
+
 = 1.1.3 (18 Sep 2014) =
 * Fix display compatibility issue with WordPress 4.0.
 * Support earlier versions of PHP 5.2.

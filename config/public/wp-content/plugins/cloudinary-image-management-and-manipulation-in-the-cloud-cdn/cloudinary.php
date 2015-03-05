@@ -4,11 +4,11 @@ Plugin Name: Cloudinary
 Plugin URI: http://cloudinary.com/
 Description: Cloudinary allows you to upload your images to the cloud. They'll be available to your visitors through a fast content delivery network, improving your website's loading speed and overall user experience. With Cloudinary, you can transform uploaded images without leaving Wordpress - apply effects (sharpen, gray scale, sepia, and more), smart cropping and re-sizing (including face detection based cropping), and much more.
 
-Version:  1.1.3
+Version:  1.1.4
 Author: Cloudinary Ltd.
 Author URI: http://cloudinary.com/
 */
-define('cloudinary_VERSION', '1.1.3');
+define('cloudinary_VERSION', '1.1.4');
 define('cloudinary_PLUGIN_URL', plugin_dir_url( __FILE__ ));
 require "cloudinary_api.php" ;
 require "api.php" ;
@@ -523,7 +523,7 @@ class CloudinaryPlugin
     if (!$this->configured()) {
       return;
     }
-    $img_l = get_bloginfo('url') . "/wp-content/plugins/" . CLOUDINARY_UNIQUE_ID . "/images/ajax-loader.gif";
+    $img_l = plugins_url('/images/ajax-loader.gif', __FILE__);
     ?>
     <script type="text/javascript">
     jQuery(document).ready(function() {
