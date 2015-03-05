@@ -3,7 +3,7 @@
 /*
 Plugin Name: MemCachier
 Description: DO NOT ACTIVATE THIS PLUGIN. Move this file (wp-content/plugins/memcachier/object-cache.php) to wp-content/object-cache.php
-Version: 1.0
+Version: 1.0.1
 Plugin URI: http://wordpress.org/extend/plugins/memcachier/
 Author: Per Soderlind - uses code from Ryan Boren, Denis de Bernardy, Matt Martz
 
