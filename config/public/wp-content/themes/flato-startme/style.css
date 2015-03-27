@@ -32,6 +32,7 @@ header.site-header {
 
 .site-top {
     background: #fdfdfd url(http://assets.start.me/assets/logo.png) no-repeat 14px center;
+    background-size: auto 27px;
     border-bottom: 1px solid #e0e4e8;
 }
 
